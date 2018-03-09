@@ -118,3 +118,22 @@ a.desc:after {
     background-color: #d3d3d3;
     padding: 30px;
 }
+.item-box{
+    padding: 5px;
+    background-color: #dddddda6;
+    margin: 10px;
+}
+
+.item-box img{
+    width: 100%;
+}
+
+.summary{
+    padding: 10px;
+}
+.pricing{
+    float: right;
+}
+.original{
+    text-decoration: line-through;
+}

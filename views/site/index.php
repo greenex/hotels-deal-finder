@@ -8,12 +8,14 @@ $this->title = 'Expedia - Deals Finder';
     <?=$this->render('_filters',['searchModel'=>$searchModel])?>
 
 
-    <?= \yii\widgets\ListView::widget(
-            [
-                'dataProvider' => $dataProvider,
-                'itemView'     =>  '_hotelItem',
-            ])
-    ?>
+   <div class="row">
+       <?= \yii\widgets\ListView::widget(
+           [
+               'dataProvider' => $dataProvider,
+               'itemView'     =>  '_hotelItem',
+           ])
+       ?>
+   </div>
 
 
 </div>
