@@ -29,12 +29,19 @@ class OffersService{
     }
 
     public function GetOffers($params = []){
+        $params     = array_filter($params);
         $curl       = new curl\Curl();
         $params     = array_merge($params,$this->requiredApiParams);
         $response   = $curl->setGetParams($params)->get(\Yii::$app->params['OFFERS_API_URL']);
 
+      //  print_r($params);exit;
+
         if ($curl->errorCode === null) {
-            return Json::decode($response,true);
+            $response =  Json::decode($response,true);
+            if(isset($response['offers']) AND isset($response['offers']['Hotel'])){
+                return $response['offers']['Hotel'];
+            }
+            return [];
         } else {
             throw new Exception('Error in CURL');
         }
