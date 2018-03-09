@@ -23,7 +23,7 @@ env:
     - secure: secure_github_oauth_token_generated_with_travis
 
 before_install:
-  - composer config -g github-oauth.github.com "$GITHUB_TOKEN"
+  - composer config -g github-oauth.github.com "967a6816170772508e2d8556fbdcbf1e384af89f"
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer update --dev --prefer-dist --no-interaction
