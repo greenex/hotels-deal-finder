@@ -37,7 +37,4 @@ class HotelsSearchFormTest extends \Codeception\Test\Unit
     }
 
 
-
-
-
 }
