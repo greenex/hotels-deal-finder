@@ -35,7 +35,7 @@ use yii\jui\SliderInput;
             ])->textInput() ?>
         </div>
         <div class="col-md-3">
-            <?=  $form->field($searchModel, 'lengthOfStay')->textInput(); ?>
+            <?=  $form->field($searchModel, 'lengthOfStay')->textInput([ 'type' => 'number']); ?>
         </div>
     </div>
 

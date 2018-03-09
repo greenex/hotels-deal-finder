@@ -6,8 +6,6 @@ $this->title = 'Expedia - Deals Finder';
 ?>
 <div class="site-index">
     <?=$this->render('_filters',['searchModel'=>$searchModel])?>
-
-
    <div class="row">
        <?= \yii\widgets\ListView::widget(
            [
@@ -16,6 +14,4 @@ $this->title = 'Expedia - Deals Finder';
            ])
        ?>
    </div>
-
-
 </div>

@@ -29,12 +29,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
         $searchModel    = new HotelsSearchForm();
         $instance       =  OffersService::getInstance();
         $params         =[];
-
-
 
         if($searchModel->load(Yii::$app->request->get())){
             $params = $searchModel->attributes;

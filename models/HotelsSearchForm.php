@@ -13,7 +13,7 @@ class HotelsSearchForm extends Model
     public $minTripStartDate;
     public $maxTripStartDate;
 
-    public $lengthOfStay;
+    public $lengthOfStay = 1;
 
     public $minStarRating   ;
     public $maxStarRating   ;
@@ -31,9 +31,12 @@ class HotelsSearchForm extends Model
     public function rules()
     {
         return [
+            [['destinationName','minTripStartDate','lengthOfStay'], 'required'],
             ['destinationName', 'string'],
-            [['minTripStartDate','maxTripStartDate'],'date','format' => 'yyyy-MM-dd'],
-            //['minTripStartDate', 'compare', 'compareAttribute' => 'maxTripStartDate', 'operator' => '<='],
+            [['minTripStartDate','maxTripStartDate'],'date','format' => 'yyyy-MM-dd','min'=>date('Y-m-d')],
+            [['minTripStartDate','maxTripStartDate'],'validatePastDates'],
+            ['maxTripStartDate', 'yii\validators\CompareValidator', 'compareAttribute' => 'minTripStartDate', 'operator' => '>=' ],
+            ['minTripStartDate', 'yii\validators\CompareValidator', 'compareAttribute' => 'maxTripStartDate', 'operator' => '<=', ],
             [['lengthOfStay'],'integer' ,'min' => 1],
             [['minStarRating','maxStarRating'],'integer' ,'min' => 0],
             [['minTotalRate','maxTotalRate'],'integer' ,'min' => 0],
@@ -41,11 +44,16 @@ class HotelsSearchForm extends Model
         ];
     }
 
+    public function validatePastDates($attribute){
+        if (strtotime($this->$attribute) < strtotime(date('Y-m-d 00:00:00')) ) {
+            $this->addError($attribute, 'The date should be today to in future');
+        }
+    }
     public function attributeLabels(){
         return [
             'destinationName'=> 'Destination Name',
-            'minTripStartDate'=> 'Check In Date',
-            'maxTripStartDate'=> 'Check Out Date',
+            'minTripStartDate'=> 'Min Check In Date',
+            'maxTripStartDate'=> 'max Check In Date',
         ];
     }
 
