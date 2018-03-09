@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
+    'OFFERS_API_URL' => 'https://offersvc.expedia.com/offers/v2/getOffers'
 ];
