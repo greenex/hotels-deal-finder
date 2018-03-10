@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\ActiveForm;
-use PetraBarus\Yii2\GooglePlacesAutoComplete\GooglePlacesAutoComplete;
+use app\components\GooglePlacesAutoComplete;
 use yii\jui\SliderInput;
 ?>
 
